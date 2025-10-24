@@ -10,14 +10,18 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static java.util.regex.Pattern.matches;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static org.hamcrest.CoreMatchers.is;
 
+import android.view.View;
+
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +41,6 @@ public class MainActivityTest {
         onView(withId(R.id.button_confirm)).perform(click());
         onView(withText("Edmonton")).check(matches(isDisplayed()));
     }
-
     @Test
     public void testClearCity() {
         // Add first city to the list
